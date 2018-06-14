@@ -1,0 +1,51 @@
+#app{
+    min-width:900px;
+    max-height:900px;
+    margin-left:10%;
+    margin-right:10%;
+}
+.top{
+    border-bottom:5px solid black;
+    margin-bottom:20px;
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+}
+.left{
+    width:30%;
+    float: left;
+}
+.center{
+    width:2px;
+    height:70%;
+    background:black;
+    float:left;
+}
+.right{
+    width:69%;
+    float: right;
+}
+.submit{
+    margin-top:50px;
+    text-align: center;
+}
+.role-item{
+    padding:5px;
+    margin:5px;
+    font-size:1.3em;
+    line-height: 1.5em;
+}
+.url-item{
+    border-bottom:1px solid #dbd4d4;
+    margin-bottom:5px;
+}
+.unchecked{
+    color:blue;
+    background:#dceced;
+}
+.checked{
+    background:#959b9b;
+}
+.hover-pointer{
+    cursor:pointer;
+}

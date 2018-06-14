@@ -1,0 +1,41 @@
+<!DOCTYPE >
+<html>
+
+<head>
+    <title>管理员授权</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div id="app">
+    <div class="top" v-text="warmText"></div>
+    <div class="left">
+        <div v-for="(item,index) in roles" class="role-item" :class="index==roleCheckedIndex? 'checked':'unchecked'">
+            <span v-text="item.content" class="hover-pointer" @click="roleClick(index)"></span>
+        </div>
+        <div style="text-align: center;">
+            <button v-show="!isAddRole" @click="isAddRole=!isAddRole">新增角色</button>
+            <div v-show="isAddRole">
+                <input type="text" v-model="name"/>
+                <button @click="addRole()">提交</button>
+                <button @click="isAddRole=false">取消</button>
+            </div>
+        </div>
+        <div class="submit">
+            <button @click="submit" id="submit">提交</button>
+        </div>
+    </div>
+    <div class="center"></div>
+    <div class="right" v-show="roleCheckedIndex>=0">
+        <div v-for="(item,index) in urls" class="url-item">
+            <label>
+                <input type="checkbox" v-model="item.checked" style="vertical-align: middle;">
+                <span>{{`${item.url} ${item.method} ${item.description}`}}</span>
+            </label>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/js/vue.js"></script>
+<script src="/js/axios.js"></script>
+<script src="/js/main.js"></script>
+</html>

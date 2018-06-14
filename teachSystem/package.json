@@ -1,0 +1,34 @@
+{
+  "name": "restdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js",
+    "updateSource": "node dbAuth.js"
+  },
+  "author": "fxb",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "fs-extra": "^5.0.0",
+    "iconv-lite": "^0.4.23",
+    "js-xlsx": "^0.8.22",
+    "jsonwebtoken": "^8.2.0",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.3.0",
+    "koa-static": "^4.0.2",
+    "koa2-cors": "^2.0.5",
+    "log4js": "^2.3.12",
+    "mysql": "^2.15.0",
+    "redis": "^2.8.0",
+    "request": "^2.85.0",
+    "uuid": "^3.1.0",
+    "xlsx": "^0.12.6"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}

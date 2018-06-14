@@ -1,0 +1,25 @@
+{
+  "name": "loginsystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "fxb",
+  "license": "ISC",
+  "dependencies": {
+    "jsonwebtoken": "^8.2.0",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.3.0",
+    "koa2-cors": "^2.0.5",
+    "log4js": "^2.4.1",
+    "mysql": "^2.15.0",
+    "nodemailer": "^4.6.2",
+    "redis": "^2.8.0",
+    "trek-captcha": "^0.4.0"
+  }
+}
