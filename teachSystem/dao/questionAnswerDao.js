@@ -6,15 +6,15 @@ class questionAnswerDao {
         let res;
         if (type == 'start')
             res = await MysqlHelper.row(`
-                select * from user_question_answer_view where start_u_id=? and c_id=? and is_closed=? order by last_update_time
+                select * from user_question_answer_view where start_u_id=? and c_id=? and is_closed=? 
                 `, u_id, c_id, isClosed);
         else if (type == 'reply')
             res = await MysqlHelper.row(`
-                select * from user_question_answer_view where reply_u_id=? and c_id=? and is_closed=? order by last_update_time
+                select * from user_question_answer_view where reply_u_id=? and c_id=? and is_closed=? 
                 `, u_id, c_id, isClosed);
         else if (type == 'all')
             res = await MysqlHelper.row(`
-                select * from user_question_answer_view where (start_u_id=? or reply_u_id=?) and c_id=? and is_closed=? order by last_update_time
+                select * from user_question_answer_view where (start_u_id=? or reply_u_id=?) and c_id=? and is_closed=? 
                 `, u_id, u_id, c_id, isClosed);
         return res;
     }

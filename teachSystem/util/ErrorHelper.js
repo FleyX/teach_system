@@ -2,19 +2,12 @@
 
 class ErrorHelper {
     /**
-     * 返回一个自定义错误，一般情况下请勿使用
+     * 返回一个自定义错误
      * @param {String} message 
      * @param {Number} status 
      */
     static newError(message, status) {
         return getError(message, status);
-    }
-
-    /**
-     * 返回一个无访问权限错误
-     */
-    static authError() {
-        return getError('无访问权限', 403);
     }
 
     static Error403(message){

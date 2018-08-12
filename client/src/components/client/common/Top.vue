@@ -46,7 +46,7 @@
           <template slot="title">答疑</template>
           <el-menu-item index="new">我要提问</el-menu-item>
           <el-menu-item index="current">当前答疑</el-menu-item>
-          <el-menu-item index="history">历史答疑</el-menu-item>
+          <el-menu-item index="historyqa">历史答疑</el-menu-item>
         </el-submenu>
       </el-menu>
     </div>

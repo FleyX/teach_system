@@ -1,6 +1,7 @@
 import Public from '@/components/public/Main'
 import Login from '@/components/public/Login'
 import ResetPass from '@/components/public/ResetPass'
+import About from '@/components/public/About'
 
 export default {
   path: '/public',
@@ -17,5 +18,6 @@ export default {
   }, {
     path: "client_login/reset_pass",
     component: ResetPass
-  }]
+  }
+]
 }

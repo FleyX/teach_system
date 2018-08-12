@@ -57,8 +57,11 @@ export default {
   },
   methods: {
     init() {
-      if (this.data == null)
+      if (this.data == null) {
+        if (this.timer != null)
+          clearInterval(this.timer);
         return;
+      }
       if (this.data.start_u_id == this.u_id)
         this.type = 'start';
       else
@@ -121,9 +124,10 @@ export default {
     },
     close() {
       alertConfirm("确定关闭本答疑？（关闭后双方无法再次回复）").then(() => {
-        $http.put(`/question_answer/${this.data.qa_id}/close`,{start_u_id:this.data.start_u_id}).then(res => {
-          alertMessage("关闭成功",'success');
-          this.data.is_closed=1;
+        $http.put(`/question_answer/${this.data.qa_id}/close`, { start_u_id: this.data.start_u_id }).then(res => {
+          alertMessage("关闭成功", 'success');
+          this.$emit("closeMessage");
+          this.data.is_closed = 1;
         })
       })
     }
@@ -133,14 +137,14 @@ export default {
 
 <style scoped>
 .app {
-  flex:1;
+  flex: 1;
   background: white;
   margin: 20px;
   margin-top: 0;
   padding: 5px;
   padding-top: 5;
   border-radius: 7px;
-  border:1px solid #d0d0d0;
+  border: 1px solid #d0d0d0;
   min-width: 750px;
 }
 .content {

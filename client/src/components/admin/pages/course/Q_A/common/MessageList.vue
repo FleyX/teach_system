@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <div v-for="item in data" :key="item.qa_id" class="item all-item-between all-item-vcenter" :class="{'active':item==current}" @click="change(item)">
+    <div v-for="item in data" :key="item.qa_id" class="item all-item-between all-item-vcenter" :class="{'active':current!=null&&(item.qa_id==current.qa_id)}" @click="change(item)">
       <div style="width:170px;overflow:hidden">
         <student-badge v-if="item.type=='start'" :data="{u_id:item.reply_u_id,u_name:item.reply_u_name}"></student-badge>
         <student-badge v-else :data="{u_id:item.start_u_id,u_name:item.start_u_name}"></student-badge>

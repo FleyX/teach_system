@@ -110,10 +110,6 @@ export default {
     {
       index:'Q_A',
       name:"当前答疑"
-    },
-    {
-      index:"Q_A/history",
-      name:"历史答疑"
     }
   ],
   //主页统计

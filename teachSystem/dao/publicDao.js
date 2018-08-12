@@ -15,7 +15,7 @@ class publicDao {
                 let id = uuid.v1();
                 let dest = path.join(config.staticPath, 'imgs', id);
                 await fs.move(item.path, dest);
-                res.data.push(config.host+'imgs/'+id);
+                res.data.push(config.host+'/imgs/'+id);
             }
         } catch (err) {
             res.errno = 1;

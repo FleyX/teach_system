@@ -125,7 +125,8 @@ class testDao {
         if (res == null || type == 'new') {
             res = {};
             //已提交学生成绩
-            res['score'] = await Mysqlhelper.row(`select u_id,u_name,score,sum,grade,class,class_id,code from student_test_view where test_id=? and submit_time>0`, test_id);
+            res['class'] = await Mysqlhelper.row(`SELECT b.class_id,b.content from test_class a inner join class b on a.class_id = b.class_id where test_id=?`,test_id);
+            res['score'] = await Mysqlhelper.row(`select u_id,u_name,score,sum,class,class_id,code from student_test_view where test_id=?`, test_id);
             //智能组题无法获取下列信息，因为每个人所做题目不同，无法做统一分析
             let qg_id = await Mysqlhelper.single(`select qg_id from test where test_id=?`, test_id);
             if (qg_id != null) {

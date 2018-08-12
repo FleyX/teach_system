@@ -2,14 +2,14 @@
   <div>
     <el-select v-model="type" @change="changeData">
       <el-option value="0" label="全部"></el-option>
-      <el-option v-for="(item,index) in options" :key="index" :label="item.label" :value="item.class_id"></el-option>
+      <el-option v-for="item in options" :key="item.class_id" :label="item.label" :value="item.class_id"></el-option>
     </el-select>
-    <el-table :data="tableData" max-height="500px">
+    <el-table :data="tableData" max-height="500">
       <el-table-column type="index" width="50px"></el-table-column>
       <el-table-column prop="code" label="学号" sortable></el-table-column>
       <el-table-column prop="u_name" label="姓名"></el-table-column>
-      <el-table-column label="班级" :formatter="row=>row.grade+' - '+row.class"></el-table-column>
-      <el-table-column width="100px" label="成绩" prop="score" sortable></el-table-column>
+      <el-table-column prop="class" label="班级" ></el-table-column>
+      <el-table-column width="100px" label="成绩" prop="score" :formatter="showScore" sortable></el-table-column>
     </el-table>
   </div>
 </template>
@@ -17,7 +17,7 @@
 <script>
 export default {
   name: "ScoreTable",
-  props: ["data"],
+  props: ["data","classList"],
   data() {
     return {
       tableData: [],
@@ -35,20 +35,11 @@ export default {
   methods: {
     init() {
       this.tableData = this.data;
-      this.options=[];
-      let temp = {};
-      this.data.forEach(item => {
-        if (temp[item.class_id] == undefined) {
-          temp[item.class_id] = item.grade + "-" + item.class;
-        }
-      });
-      for (let key in temp) {
-        this.options.push({
-          class_id: key,
-          label: temp[key]
-        });
-      }
-      this.options.sort((a, b) => a.label > b.label);
+      this.data.forEach(item=>item.score==null?item.score=-1:null);
+      this.options=this.class;
+    },
+    showScore(row){
+      return row.score==-1 ? '未提交':row.score;
     },
     changeData(value) {
       if (value == "0") this.tableData = this.data;

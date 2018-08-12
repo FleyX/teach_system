@@ -3,23 +3,23 @@ class badgeHelper {
     //检查课程注册门数徽章获取情况
     static async checkCourseNum(u_id) {
         let count = await MysqlHelper.single(`select count(*) from student_evaluate_view where u_id=?`, u_id);
-        let id = await MysqlHelper.single(`select b_id from student_badge where b_id>0 and b_id<5 and u_id=?`, u_id);
-        let b_id;
-        if (count == 0 && id != null) {
-            await MysqlHelper.delete(`delete from student_badge where b_id=? and u_id=?`, u_id);
+        let b_id = await MysqlHelper.single(`select b_id from student_badge where b_id>0 and b_id<5 and u_id=?`, u_id);
+        if (count == 0 && b_id != null) {
+            await MysqlHelper.delete(`delete from student_badge where b_id=? and u_id=?`,b_id, u_id);
             return;
         }
+        let current;
         if (count < 4)
-            b_id = 2;
+            current= 2;
         else if (count < 7)
-            b_id = 3;
+            current= 3;
         else if (count >= 7)
-            b_id = 4;
-        if (id != null) {
-            if (id != b_id)
-                await MysqlHelper.update(`update student_badge set b_id=?,get_time=? where b_id=? and u_id=?`, b_id, Date.now(), id, u_id);
+            current= 4;
+        if (b_id != null) {
+            if (b_id != current)
+                await MysqlHelper.update(`update student_badge set b_id=?,get_time=? where b_id=? and u_id=?`, current, Date.now(), b_id, u_id);
         } else {
-            await MysqlHelper.insert(`insert into student_badge value(?,?,?)`, u_id, b_id, Date.now());
+            await MysqlHelper.insert(`insert into student_badge value(?,?,?)`, u_id, current, Date.now());
         }
     }
 

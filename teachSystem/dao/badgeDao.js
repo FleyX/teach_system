@@ -9,7 +9,7 @@ class badgeDao {
         if (res == null) {
             await badgeHelper.checkCourseNum(u_id);
             await badgeHelper.checkEvaluate(u_id);
-            let res = await MysqlHelper.row(`
+            res = await MysqlHelper.row(`
                 SELECT a.get_time,b.* FROM student_badge a INNER JOIN badge b ON a.b_id = b.b_id WHERE u_id = ?
                 `, u_id);
             res = JSON.stringify(res);

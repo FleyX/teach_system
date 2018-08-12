@@ -26,7 +26,7 @@ exports['GET /course/:c_id/announcement/open']=async(ctx,next)=>{
 }
 
 /**
- * 获取公告内容 /announcement/:a_id/content
+ * 获取公告内容 
  */
 exports['GET /announcement/:a_id/content']= async (ctx, next) => {
     let res = await announcementDao.getContent(ctx.params.a_id);
@@ -34,7 +34,9 @@ exports['GET /announcement/:a_id/content']= async (ctx, next) => {
 }
 
 /**
- * 切换公告显示状态 /announcement/:a_id/switch?action=true
+ * 切换公告显示状态
+ * url param:
+ *   action:切换到true/false
  */
 exports['PUT /announcement/:a_id/switch']= async (ctx, next) => {
     let res = await announcementDao.switchOne(ctx.params.a_id,ctx.allParams.action);
@@ -47,7 +49,9 @@ exports['POST /announcement']= async (ctx, next) => {
     await announcementDao.addOne(ctx.allParams);
     ctx.onSuccess();
 }
-
+/**
+ * 删除一个公告
+ */
 exports['DELETE /announcement/:a_id']= async (ctx, next) => {
     await announcementDao.deleteOne(ctx.params.a_id);
     ctx.onSuccess();

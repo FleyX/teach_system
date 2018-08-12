@@ -37,8 +37,8 @@ class testHelper {
             throw ErrorHelper.Error400("测试还未开始");
         if ((testData.end_time - now) < -60 * 1000) //一分钟缓冲时间，避免提交失败
             throw ErrorHelper.Error400("测试已经结束");
-        if (testData.submit_time > 0)
-            throw ErrorHelper.Error400("已经提交答案，请勿重复提交");
+        // if (testData.submit_time > 0)
+        //     throw ErrorHelper.Error400("已经提交答案，请勿重复提交");
     }
 }
 

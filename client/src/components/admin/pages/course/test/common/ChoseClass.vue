@@ -1,6 +1,5 @@
 <template>
-  <el-tree :data="treeData" node-key="id" :default-expanded-keys="[c_id]" :props="props" show-checkbox @check-change="handleChange">
-
+  <el-tree :data="treeData" node-key="id" :default-expanded-keys="[c_id]" :props="props" default-expand-all check-on-click-node show-checkbox @check-change="handleChange">
   </el-tree>
 </template>
 

@@ -57,8 +57,11 @@ export default {
   },
   methods: {
     init() {
-      if (this.data == null)
+      if (this.data == null) {
+        if (this.timer != null)
+          clearInterval(this.timer);
         return;
+      }
       if (this.data.start_u_id == this.u_id)
         this.type = 'start';
       else
@@ -67,8 +70,6 @@ export default {
       this.MessageData = [];
       this.lastUpdateTime = 0;
       this.isGettingData = false;
-      if (this.timer != null)
-        clearInterval(this.timer);
       this.getData();
       if (this.data.is_closed === 1)
         return;
@@ -121,9 +122,10 @@ export default {
     },
     close() {
       alertConfirm("确定关闭本答疑？（关闭后双方无法再次回复）").then(() => {
-        $httpc.put(`/question_answer/${this.data.qa_id}/close`,{start_u_id:this.data.start_u_id}).then(res => {
-          alertMessage("关闭成功",'success');
-          this.data.is_closed=1;
+        $httpc.put(`/question_answer/${this.data.qa_id}/close`, { start_u_id: this.data.start_u_id }).then(res => {
+          alertMessage("关闭成功", 'success');
+          this.$emit("closeMessage");
+          this.data.is_closed = 1;
         })
       })
     }

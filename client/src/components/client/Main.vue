@@ -7,7 +7,7 @@
       </transition>
     </div>
     <div class="client-bottom all-item-hcenter all-item-vcenter">
-      版权所有
+      <router-link to="/about"><span style="font-size:.7em">关于</span></router-link>
     </div>
   </div>
 </template>

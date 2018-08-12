@@ -1,4 +1,5 @@
 const MysqlHelper = require('../util/MysqlHelper.js');
+const RedisHelper = require('../util/RedisHelper.js');
 const ErrorHelper = require('../util/ErrorHelper.js');
 
 class questionGroupDao {
@@ -45,30 +46,36 @@ class questionGroupDao {
     }
 
     static async getQuestion(qg_id) {
-        let data = await MysqlHelper.row(`
+        let redisKey = qg_id + '_question_group';
+        let res = await RedisHelper.getString(redisKey);
+        if (res == null) {
+            let data = await MysqlHelper.row(`
             select b.q_type,b.q_description,b.alternative_answer,b.ql_id,a.score from group_question a inner join question_library b on a.ql_id=b.ql_id where a.qg_id=?
             `, qg_id);
-        let res = {
-            single: [],
-            mult: [],
-            gap: [],
-            program: []
-        }
-        data.forEach(item => {
-            switch (item.q_type) {
-                case 1:
-                    res.single.push(item);
-                    break;
-                case 2:
-                    res.mult.push(item);
-                    break;
-                case 3:
-                    res.gap.push(item);
-                    break;
-                case 4:
-                    res.program.push(item);
+            res = {
+                single: [],
+                mult: [],
+                gap: [],
+                program: []
             }
-        })
+            data.forEach(item => {
+                switch (item.q_type) {
+                    case 1:
+                        res.single.push(item);
+                        break;
+                    case 2:
+                        res.mult.push(item);
+                        break;
+                    case 3:
+                        res.gap.push(item);
+                        break;
+                    case 4:
+                        res.program.push(item);
+                }
+            })
+            res = JSON.stringify(res); 
+            await RedisHelper.setString(redisKey,res,60);
+        }
         return res;
     }
 
@@ -93,7 +100,7 @@ class questionGroupDao {
     static async deleteOne(c_id, qg_id) {
         try {
             await MysqlHelper.delete(`delete from question_group where c_id=? and qg_id=?`, c_id, qg_id);
-        }catch(err){
+        } catch (err) {
             console.log(err);
             throw ErrorHelper.Error403("无法删除，已经在测试中使用");
         }

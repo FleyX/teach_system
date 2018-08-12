@@ -12,7 +12,7 @@
 import MessageList from './common/MessageList'
 import MessageDetail from './common/MessageDetail'
 export default {
-  name: "CurrentQuestionAnswer",
+  name: "QuestionAnswerHistory",
   components: {
     MessageList,
     MessageDetail
@@ -29,11 +29,12 @@ export default {
     this.c_id = this.$route.params.c_id;
     this.u_id = getUserInfo().u_id;
     this.getData();
- },
+  },
   methods: {
     getData() {
       $httpc.get(`/question_answer?c_id=${this.c_id}&type=all&is_closed=1`).then(res => {
-          this.dataList = res;
+        res.sort((a,b)=>b.create_time-a.create_time);
+        this.dataList = res;
       });
     },
   }
@@ -41,5 +42,4 @@ export default {
 </script>
 
 <style>
-
 </style>

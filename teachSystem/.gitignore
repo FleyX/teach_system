@@ -13,3 +13,12 @@ yarn-error.log*
 *.njsproj
 *.sln
 package-lock.json
+log/operate/*
+log/responseTime/*
+log/visit/*
+files/temp/*
+files/userIcon/*
+files/tests/*
+files/imgs/*
+files/course/*
+files/code/*

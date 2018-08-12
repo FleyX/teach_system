@@ -5,7 +5,7 @@
       <el-tooltip effect="dark" :content="tooltip" placement="right">
         <span>我的覆盖率：{{coverage*100+'%'}}</span>
       </el-tooltip>
-      <el-tree style="margin-top:5px" :data="pointData" :props="defaultProps" @node-click="handleClick"></el-tree>
+      <el-tree style="margin-top:5px" :data="pointData" :props="defaultProps" highlight-current accordion @node-click="handleClick"></el-tree>
       <div v-if="isShow">
         做题数：{{currentKpData.count}} 正确数：{{currentKpData.right_count}} 正确率：{{rightPrecent}}
         <el-button type="primary" size="small" @click="isParamShow=true">专项练习</el-button>

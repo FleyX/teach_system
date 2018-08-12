@@ -25,7 +25,7 @@
           <span class="title">学生成绩</span>
         </template>
         <!-- <el-button type="text" size="small" @click="isScoreTableShow=!isScoreTableShow">{{isScoreTableShow?'取消':'查看'}}</el-button> -->
-        <score-table :data="detailData.score"></score-table>
+        <score-table :data="detailData.score" :classList="detailData.class"></score-table>
       </el-form-item>
       <el-form-item v-if="data.qg_id!=null">
         <template slot="label">

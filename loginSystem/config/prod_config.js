@@ -8,8 +8,8 @@ const config = {
     mysql: {
         connectionLimit: 50, //默认值10
         host: 'localhost',
-        user: 'root',
-        password: '',
+        user: 'manager',
+        password: 'manager',
         database: 'teach_system',
         multipleStatements: false //默认值false
     }

@@ -10,6 +10,7 @@ pool.query('select 1', (err, res) => {
     }
 })
 
+//获取连接 
 let getConnection = () => {
     return new Promise((resolve, reject) => {
         pool.getConnection((error, conn) => {
@@ -123,6 +124,7 @@ class MysqlHelper {
     }
 }
 
+//转换参数，参数转为基本数据类型数组
 function dealParams(params) {
     if (params.length == 1 && typeof (params[0] == 'object')) {
         return params[0];

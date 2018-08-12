@@ -2,7 +2,7 @@ const Mysqlhelper = require("../util/MysqlHelper.js");
 const StringHelper = require("../util/StringHelper.js");
 const ErrorHelper = require('../util/ErrorHelper.js');
 const config = require('../config/config.js');
-const programConfig = require("../config/programConfig.js");
+const programConfig = config.programConfig;
 const RequestHelper = require("../util/RequestHelper.js");
 const fs = require('fs-extra');
 const path = require('path');
@@ -340,7 +340,7 @@ class testHelper {
             } else {
                 score = 0;
             }
-            //编程体判题记录写入数据库
+            // 编程体判题记录写入数据库
             await Mysqlhelper.insert(`insert into judge_program value(?,?,?,?,?,?)`, sc_id, ql_id, test_id, JSON.stringify(res), score, JSON.stringify(answer));
             return score;
         }
@@ -349,6 +349,8 @@ class testHelper {
     static async addStudentTest(test_id, param, is_random) {
         try {
             for (let i = 0; i < param.choseClass.length; i++) {
+                //记录测试班级
+                await Mysqlhelper.insert(`insert into test_class value(?,?)`,test_id,param.choseClass[i].id);
                 if (!is_random) {
                     await Mysqlhelper.insert(`
                     insert into student_test(sc_id,test_id,qg_id) select a.sc_id,b.test_id,b.qg_id  from student_class a inner join test b on b.test_id=? where a.class_id=?
@@ -360,7 +362,7 @@ class testHelper {
                 }
             }
         } catch (err) {
-            await Mysqlhelper.delete('delete from test where test_id=?', res);
+            await Mysqlhelper.delete('delete from test where test_id=?', test_id);
             throw ErrorHelper.Error406("发布失败：" + err.message);
         }
     }

@@ -57,7 +57,7 @@ request = (url, method, params, form, isFormData, type) => {
     }).then(res => {
       resolve(res.data);
       //检查是否有更新token
-      console.log(res);
+      // console.log(res);
       if (res.headers['new-token'] != undefined) {
         console.log('set new token');
         if (vm.$route.path.startsWith('/admin')){

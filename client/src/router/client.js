@@ -182,7 +182,7 @@ export default {
         name:'CurrentQuestionAnswer',
         component:CurrentQuestionAnswer
       },{
-        path:'history',
+        path:'historyqa',
         name:"QuestionAnswerHistory",
         component:QuestionAnswerHistory
       }]

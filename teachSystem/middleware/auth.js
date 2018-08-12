@@ -41,7 +41,7 @@ let verify = async (ctx) => {
             expiresIn: config.shortTokenExpiration
         });
         // await redisHelper.deleteKey(token);
-        await redisHelper.setString(newToken, newYan);
+        await redisHelper.setString(newToken, newYan,config.shortTokenExpiration);
         ctx.response.set('new-token', newToken);
         ctx.response.set('Access-Control-Expose-Headers','new-token');
     }
@@ -63,8 +63,8 @@ let verify = async (ctx) => {
     }
     //获取该用户类型权限
     let authKey = userInfo.j_id + '_authority';
-    // let urls = await redisHelper.getObject(authKey);
-    let urls = null;
+    let urls = await redisHelper.getObject(authKey);
+    // let urls = null;
     if (urls == null) {
         urls = await mysqlHelper.row(`
             select b.r_id,b.url,b.method from jurisdiction_resource a inner join resource b on a.r_id = b.r_id where a.j_id=?
@@ -73,7 +73,7 @@ let verify = async (ctx) => {
         urls.forEach(item => {
             temp[item.url + item.method] = true;
         })
-        await redisHelper.setObject(authKey, temp, 0);
+        await redisHelper.setObject(authKey, temp);
         urls = temp;
     }
     //判断是否拥有权限

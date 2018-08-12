@@ -3,10 +3,10 @@
     <div class="action all-item-between all-item-vcenter">
       <el-input style="width:100%" placeholder="搜索" v-model="filterText"></el-input>
     </div>
-    <el-tree ref="tree" :data="tree" :props="defaultProps" :expand-on-click-node="false" :filter-node-method="filterNode">
+    <el-tree ref="tree" :data="tree" :props="defaultProps"  :filter-node-method="filterNode">
       <div slot-scope="{node,data}">
         <span>{{node.label}}</span>
-        <i class="el-icon-circle-plus primary" v-if="data.level<3" @click="append(node,data)"></i>
+        <i class="el-icon-circle-plus primary" v-if="data.level<3" @click.stop="append(node,data)"></i>
         <i class="el-icon-remove warning" v-if="data.level>1&&(data.children==undefined||data.children.length==0)" @click.stop="remove(node,data)"></i>
       </div>
     </el-tree>

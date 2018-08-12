@@ -104,7 +104,7 @@ export default {
         return;
       }
       $httpc.post(`/question_answer`, this.form).then(res => {
-        alertMessage("操作成功");
+        alertMessage("操作成功",'success');
         this.$router.push('./current');
       });
     }

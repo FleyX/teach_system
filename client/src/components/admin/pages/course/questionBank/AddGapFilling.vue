@@ -72,7 +72,7 @@ export default {
     };
   },
   watch: {
-    "form.q_description": function(newValue) {
+    "form.q_description": function (newValue) {
       this.blankCount = newValue.match(/\[blank_space\]/g).length;
     }
   },
@@ -82,14 +82,19 @@ export default {
   },
   methods: {
     addOneAnswer() {
-      if(this.form.answer.length>=this.blankCount){
-        alertMessage("答案数量超过限定数","warning");
+      if (this.form.answer.length >= this.blankCount) {
+        alertMessage("答案数量超过限定数", "warning");
         return;
       }
       this.form.answer.push(this.answerForm.content);
       this.answerForm.content = "";
     },
     addTag(data) {
+      let index = this.form.tags.findIndex(item => item.kp_id == data.value);
+      if (index > -1) {
+        alertMessage("知识点重复", 'error');
+        return;
+      }
       this.form.tags.push({
         kp_id: data.value,
         content: data.label
@@ -97,8 +102,8 @@ export default {
       this.isAddTagInput = false;
     },
     submit() {
-      if(this.form.answer.length!=this.blankCount){
-        alertMessage("预设答案数目与填空数不匹配",'error');
+      if (this.form.answer.length != this.blankCount) {
+        alertMessage("预设答案数目与填空数不匹配", 'error');
         return;
       }
       $http.post(`/question_library`, this.form).then(res => {

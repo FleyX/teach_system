@@ -75,6 +75,11 @@ export default {
   },
   methods: {
     addTag(data) {
+      let index = this.form.tags.findIndex(item => item.kp_id == data.value);
+      if (index > -1) {
+        alertMessage("知识点重复", 'error');
+        return;
+      }
       this.form.tags.push({
         kp_id: data.value,
         content: data.label
@@ -82,8 +87,8 @@ export default {
       this.isAddTagInput = false;
     },
     submit() {
-      if(this.form.answer.length==0){
-        alertMessage("请至少输入一组测试数据",'error');
+      if (this.form.answer.length == 0) {
+        alertMessage("请至少输入一组测试数据", 'error');
         return;
       }
       $http.post(`/question_library`, this.form).then(res => {
@@ -91,9 +96,9 @@ export default {
         // this.clear();
       });
     },
-    addCesi(){
+    addCesi() {
       this.form.answer.push(this.tempAnswer);
-      this.tempAnswer={input:'',output:''};
+      this.tempAnswer = { input: '', output: '' };
     },
     clear() {
       this.form.is_exam = false;
@@ -102,7 +107,7 @@ export default {
       this.form.q_simple_description = "";
       this.form.tags = [];
       this.form.answer = [];
-      this.tempAnswer={input:'',output:''};
+      this.tempAnswer = { input: '', output: '' };
     }
   }
 };

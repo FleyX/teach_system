@@ -34,7 +34,6 @@ import AddSingleStudent from '@/components/admin/pages/course/student/AddSingleS
 import AddManyStudent from '@/components/admin/pages/course/student/AddManyStudent'
 
 import CurrentQuestionAnswer from '@/components/admin/pages/course/Q_A/CurrentQuestionAnswer'
-import QuestionAnswerHistory from '@/components/admin/pages/course/Q_A/QuestionAnswerHistory'
 
 import StudentStatistics from '@/components/admin/pages/course/statistics/StudentStatistics'
 export default {
@@ -217,10 +216,6 @@ export default {
         path: '',
         name: 'CurrentQuestionAnswer',
         component: CurrentQuestionAnswer
-      }, {
-        path: 'history',
-        name: "QuestionAnswerHistory",
-        component: QuestionAnswerHistory
       }]
     }
   ]

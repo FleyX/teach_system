@@ -32,20 +32,23 @@ export default {
       class_id: "",
       u_name: "",
       code: "",
-      password:"123456"
+      password:"123456",
     };
   },
   methods: {
     resetData() {
       this.optionValue = [];
       this.class_id = "";
-      this.c_name = "";
+      this.u_name = "";
       this.code = "";
     },
     submit() {
       let _this = this;
-      $http
-        .post(`/class/${this.class_id}/add_one_student`, {
+      if(this.class_id==''||this.u_name ==''||this.code==''||this.password==''){
+        alertMessage("请勿留空",'error');
+        return;
+      }
+      $http.post(`/class/${this.class_id}/add_one_student`, {
           code: this.code,
           u_name: this.u_name,
           password:this.password

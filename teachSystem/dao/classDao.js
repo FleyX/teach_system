@@ -29,12 +29,17 @@ class classDao {
         let c_id = await mysqlHelper.single(`select c_id from grade a inner join class b on a.g_id=b.g_id where b.class_id=?`, class_id);
         //判断学生是否已经存在该课程中
         let count = await mysqlHelper.single(`select count(*) from student_evaluate_view where c_id=? and u_id=?`, c_id, u_id);
-        if(count>0)
+        if (count > 0)
             throw ErrorHelper.Error403("加入失败,该学生已存在与该课程");
-        try {
-            await mysqlHelper.execute(`insert into student_class(u_id,class_id) value(?,?)`, u_id, class_id);
-        } catch (err) {
-            throw ErrorHelper.Error403("加入失败，可能学生已经在该班级");
+        let sc_id = await mysqlHelper.insert(`insert into student_class(u_id,class_id) value(?,?)`, u_id, class_id);
+        //加入课程测试信息
+        let testList = await mysqlHelper.row(`select b.test_id,b.qg_id from test_class a inner join test b on a.test_id = b.test_id where class_id=?`, class_id);
+        for (let i = 0; i < testList.length; i++) {
+            if (testList[i].qg_id == null) {
+                await mysqlHelper.insert("insert into student_test(sc_id,test_id) value(?,?)", sc_id, testList[i].test_id);
+            } else {
+                await mysqlHelper.insert("insert into student_test(sc_id,test_id,qg_id) value(?,?,?)", sc_id, testList[i].test_id, testList[i].qg_id);
+            }
         }
     }
 

@@ -90,6 +90,11 @@ export default {
       this.answerForm.content = "";
     },
     addTag(data) {
+      let index = this.form.tags.findIndex(item=>item.kp_id == data.value);
+      if(index > -1){
+        alertMessage("知识点重复",'error');
+        return;
+      }
       this.form.tags.push({
         kp_id: data.value,
         content: data.label
