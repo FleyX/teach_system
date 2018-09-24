@@ -177,12 +177,6 @@ CREATE TABLE `judge_program`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of judge_program
--- ----------------------------
-INSERT INTO `judge_program` VALUES (33, 108, 28, '{\"err\":null,\"data\":[{\"error\":0,\"memory\":1531904,\"exit_code\":0,\"test_case\":\"2\",\"output_md5\":\"45c48cce2e2d7fbdea1afc51c7c6ad26\",\"signal\":0,\"cpu_time\":0,\"output\":null,\"real_time\":1,\"result\":0,\"right\":true},{\"error\":0,\"memory\":1658880,\"exit_code\":0,\"test_case\":\"1\",\"output_md5\":\"a87ff679a2f3e71d9181a67b7542122c\",\"signal\":0,\"cpu_time\":0,\"output\":null,\"real_time\":1,\"result\":0,\"right\":true}]}', 20, '[\"cpp\",\"#include <cstdio>\\n\\nint main() {\\n    int T_T, a, b;\\n\\n\\n        scanf(\\\"%d%d\\\", &a, &b);\\n        printf(\\\"%d\\\\n\\\", a+b);\\n\\n    return 0;\\n}\"]');
-INSERT INTO `judge_program` VALUES (34, 108, 28, '{\"err\":null,\"data\":[{\"error\":0,\"memory\":1523712,\"exit_code\":0,\"test_case\":\"2\",\"output_md5\":\"45c48cce2e2d7fbdea1afc51c7c6ad26\",\"signal\":0,\"cpu_time\":0,\"output\":null,\"real_time\":3,\"result\":0,\"right\":true},{\"error\":0,\"memory\":1581056,\"exit_code\":0,\"test_case\":\"1\",\"output_md5\":\"a87ff679a2f3e71d9181a67b7542122c\",\"signal\":0,\"cpu_time\":0,\"output\":null,\"real_time\":1,\"result\":0,\"right\":true}]}', 20, '[\"cpp\",\"#include <cstdio>\\n\\nint main() {\\n    int T_T, a, b;\\n\\n\\n        scanf(\\\"%d%d\\\", &a, &b);\\n        printf(\\\"%d\\\\n\\\", a+b);\\n\\n    return 0;\\n}\"]');
-
--- ----------------------------
 -- Table structure for jurisdiction
 -- ----------------------------
 DROP TABLE IF EXISTS `jurisdiction`;
@@ -439,11 +433,6 @@ CREATE TABLE `question_library`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 109 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of question_library
--- ----------------------------
-INSERT INTO `question_library` VALUES (108, 7, 'a+b', '<p>&nbsp;&nbsp;&nbsp;&nbsp;使用[blank_space]表示此处需要留空</p>', 0, 3, '\"\"', '[{\"input\":\"1 3\",\"output\":\"4\"},{\"input\":\"2 7\",\"output\":\"9\"}]', 4, 2, 2);
-
--- ----------------------------
 -- Table structure for resource
 -- ----------------------------
 DROP TABLE IF EXISTS `resource`;
@@ -570,52 +559,6 @@ CREATE TABLE `student_badge`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of student_badge
--- ----------------------------
-INSERT INTO `student_badge` VALUES (1, 2, 1528512739511);
-INSERT INTO `student_badge` VALUES (1, 5, 1528512739516);
-INSERT INTO `student_badge` VALUES (5, 2, 1526555967741);
-INSERT INTO `student_badge` VALUES (5, 5, 1526189703839);
-INSERT INTO `student_badge` VALUES (6, 5, 1526192311658);
-INSERT INTO `student_badge` VALUES (7, 2, 1526974711918);
-INSERT INTO `student_badge` VALUES (8, 5, 1526190187618);
-INSERT INTO `student_badge` VALUES (10, 2, 1526193326948);
-INSERT INTO `student_badge` VALUES (11, 2, 1526722048381);
-INSERT INTO `student_badge` VALUES (21, 2, 1526722108710);
-INSERT INTO `student_badge` VALUES (21, 7, 1528939941655);
-INSERT INTO `student_badge` VALUES (22, 2, 1526722108711);
-INSERT INTO `student_badge` VALUES (22, 5, 1528949738819);
-INSERT INTO `student_badge` VALUES (23, 2, 1526722108710);
-INSERT INTO `student_badge` VALUES (23, 5, 1526984354197);
-INSERT INTO `student_badge` VALUES (24, 2, 1526722108737);
-INSERT INTO `student_badge` VALUES (24, 5, 1526736503743);
-INSERT INTO `student_badge` VALUES (25, 2, 1526722108789);
-INSERT INTO `student_badge` VALUES (25, 7, 1526977293363);
-INSERT INTO `student_badge` VALUES (26, 2, 1526722108791);
-INSERT INTO `student_badge` VALUES (27, 2, 1526722108793);
-INSERT INTO `student_badge` VALUES (27, 5, 1526977606120);
-INSERT INTO `student_badge` VALUES (28, 2, 1526722108788);
-INSERT INTO `student_badge` VALUES (28, 5, 1526818797525);
-INSERT INTO `student_badge` VALUES (29, 2, 1526722108776);
-INSERT INTO `student_badge` VALUES (29, 5, 1526977466326);
-INSERT INTO `student_badge` VALUES (30, 2, 1526722108740);
-INSERT INTO `student_badge` VALUES (30, 5, 1526818003677);
-INSERT INTO `student_badge` VALUES (31, 2, 1526722229689);
-INSERT INTO `student_badge` VALUES (31, 5, 1526790666021);
-INSERT INTO `student_badge` VALUES (32, 2, 1526722229686);
-INSERT INTO `student_badge` VALUES (32, 5, 1526981729810);
-INSERT INTO `student_badge` VALUES (33, 2, 1526722229686);
-INSERT INTO `student_badge` VALUES (33, 5, 1526983254775);
-INSERT INTO `student_badge` VALUES (34, 2, 1526722229685);
-INSERT INTO `student_badge` VALUES (35, 2, 1526722229698);
-INSERT INTO `student_badge` VALUES (35, 5, 1526983068386);
-INSERT INTO `student_badge` VALUES (36, 2, 1526722229743);
-INSERT INTO `student_badge` VALUES (37, 2, 1526722229772);
-INSERT INTO `student_badge` VALUES (38, 2, 1526722229771);
-INSERT INTO `student_badge` VALUES (39, 2, 1526722229770);
-INSERT INTO `student_badge` VALUES (40, 2, 1526722229719);
-
--- ----------------------------
 -- Table structure for student_class
 -- ----------------------------
 DROP TABLE IF EXISTS `student_class`;
@@ -641,12 +584,6 @@ CREATE TABLE `student_class`  (
   CONSTRAINT `FK_Relationship_18` FOREIGN KEY (`class_id`) REFERENCES `class` (`class_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_19` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of student_class
--- ----------------------------
-INSERT INTO `student_class` VALUES (33, 21, 9, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 1);
-INSERT INTO `student_class` VALUES (34, 22, 9, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 1);
 
 -- ----------------------------
 -- Table structure for student_knowledge
@@ -685,11 +622,6 @@ CREATE TABLE `student_test`  (
   CONSTRAINT `FK_student_test2` FOREIGN KEY (`test_id`) REFERENCES `test` (`test_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Records of student_test
--- ----------------------------
-INSERT INTO `student_test` VALUES (33, 28, 20, 1528950495256, 1528950507410, 30, '{\"108\":[\"cpp\",\"#include <cstdio>\\n\\nint main() {\\n    int T_T, a, b;\\n\\n\\n        scanf(\\\"%d%d\\\", &a, &b);\\n        printf(\\\"%d\\\\n\\\", a+b);\\n\\n    return 0;\\n}\"]}', '{\"108\":1}');
-INSERT INTO `student_test` VALUES (34, 28, 20, 1528950439678, 1528950470266, 30, '{\"108\":[\"cpp\",\"#include <cstdio>\\n\\nint main() {\\n    int T_T, a, b;\\n\\n\\n        scanf(\\\"%d%d\\\", &a, &b);\\n        printf(\\\"%d\\\\n\\\", a+b);\\n\\n    return 0;\\n}\"]}', '{\"108\":1}');
 
 -- ----------------------------
 -- Table structure for teacher_course
@@ -703,11 +635,6 @@ CREATE TABLE `teacher_course`  (
   CONSTRAINT `FK_Teacher_course` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `FK_Teacher_course2` FOREIGN KEY (`c_id`) REFERENCES `course` (`c_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of teacher_course
--- ----------------------------
-INSERT INTO `teacher_course` VALUES (1, 7);
 
 -- ----------------------------
 -- Table structure for test
@@ -752,11 +679,6 @@ CREATE TABLE `test_class`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of test_class
--- ----------------------------
-INSERT INTO `test_class` VALUES (28, 9);
-
--- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -782,72 +704,42 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 0, '刘翔', 0, '123456', 'fanxb.tl@gmail.com', '1_4mejgon2x2.jpg', 1528950766171, 0, 0, '123456');
-INSERT INTO `user` VALUES (2, 3, '张三', 3, '123456', '', 'default.jpg', 0, 1523068148944, 2, '12345678');
-INSERT INTO `user` VALUES (3, 3, '阿斯顿发', 3, '123456', 'fxb@hnu.edu.cn', '3_mhiqz3ooxy.jpg', 1526620128446, 1523068248348, 1, '1234567');
-INSERT INTO `user` VALUES (4, 3, 'a1', 3, '123456789', '', '4_8v5z1kvowx.jpg', 1525944855917, 1523068340200, 0, '123456789');
-INSERT INTO `user` VALUES (5, 3, 'a3', 3, 's123456', '2728474645@qq.com', 'default.jpg', 1526705610904, 1523068340203, 2, 's123456');
-INSERT INTO `user` VALUES (6, 3, 'a2', 3, 'sc123456', '', 'default.jpg', 1526213129732, 1523068340204, 2, 'sc123456');
-INSERT INTO `user` VALUES (7, 3, '徽章测试', 3, '123456', '', 'default.jpg', 0, 1525227949607, 2, '201426010311');
-INSERT INTO `user` VALUES (8, 3, 's2', 3, 'b123456', '', 'default.jpg', 1526190190191, 1526025014202, 2, 'b123456');
-INSERT INTO `user` VALUES (9, 3, 'af', 2, 'asdf', 'asdf', 'asd', 12, 12, 1, 'sdfa');
-INSERT INTO `user` VALUES (10, 3, 'asdf', 3, '123456', '', 'default.jpg', 0, 1526193326923, 2, 'asdfasdf');
-INSERT INTO `user` VALUES (11, 3, '100001', 3, '123456', '啊手动阀手动阀', 'default.jpg', 0, 1526722048273, 2, '1号');
-INSERT INTO `user` VALUES (21, 3, '100001', 3, '123456', 'asdfasdfasdf', '21_jqmvrucukf.jpg', 1528950746648, 1526722108493, 0, '100001');
-INSERT INTO `user` VALUES (22, 3, '100002', 3, '123456', '', 'default.jpg', 1528950474928, 1526722108497, 2, '100002');
-INSERT INTO `user` VALUES (23, 3, '100003', 3, '123456', '', 'default.jpg', 1526984353338, 1526722108498, 2, '100003');
-INSERT INTO `user` VALUES (24, 3, '100004', 3, '123456', '', 'default.jpg', 1526972317383, 1526722108498, 2, '100004');
-INSERT INTO `user` VALUES (25, 3, '100005', 3, '123456', '', 'default.jpg', 1526977286278, 1526722108498, 2, '100005');
-INSERT INTO `user` VALUES (26, 3, '100006', 3, '123456', '', 'default.jpg', 0, 1526722108498, 2, '100006');
-INSERT INTO `user` VALUES (27, 3, '100007', 3, '123456', '', 'default.jpg', 1526987463806, 1526722108498, 2, '100007');
-INSERT INTO `user` VALUES (28, 3, '100008', 3, '123456', '', 'default.jpg', 1526978164532, 1526722108498, 2, '100008');
-INSERT INTO `user` VALUES (29, 3, '100009', 3, '123456', '', 'default.jpg', 1526977563264, 1526722108499, 2, '100009');
-INSERT INTO `user` VALUES (30, 3, '100010', 3, '123456', '', 'default.jpg', 1527339604163, 1526722108499, 2, '100010');
-INSERT INTO `user` VALUES (31, 3, '200001', 3, '123456', '', 'default.jpg', 1526981646171, 1526722229484, 2, '200001');
-INSERT INTO `user` VALUES (32, 3, '200002', 3, '123456', '', 'default.jpg', 1526982551199, 1526722229484, 2, '200002');
-INSERT INTO `user` VALUES (33, 3, '200003', 3, '123456', '', 'default.jpg', 1526983869436, 1526722229484, 2, '200003');
-INSERT INTO `user` VALUES (34, 3, '200004', 3, '123456', '', 'default.jpg', 0, 1526722229484, 2, '200004');
-INSERT INTO `user` VALUES (35, 3, '200005', 3, '123456', '', 'default.jpg', 1526983076429, 1526722229484, 2, '200005');
-INSERT INTO `user` VALUES (36, 3, '200006', 3, '123456', '', 'default.jpg', 0, 1526722229485, 2, '200006');
-INSERT INTO `user` VALUES (37, 3, '200007', 3, '123456', '', 'default.jpg', 0, 1526722229485, 2, '200007');
-INSERT INTO `user` VALUES (38, 3, '200008', 3, '123456', '', 'default.jpg', 0, 1526722229485, 2, '200008');
-INSERT INTO `user` VALUES (39, 3, '200009', 3, '123456', '', 'default.jpg', 0, 1526722229488, 2, '200009');
-INSERT INTO `user` VALUES (40, 3, '200010', 3, '123456', '', 'default.jpg', 0, 1526722229489, 2, '200010');
-INSERT INTO `user` VALUES (42, 1, '教师1', 1, '123456', '', 'default.jpg', 0, 1526970799303, 2, 'a123456');
+- ----------------------------
 
--- ----------------------------
+
 -- View structure for judge_program_view
 -- ----------------------------
 DROP VIEW IF EXISTS `judge_program_view`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `manager`@`%` SQL SECURITY DEFINER VIEW `judge_program_view` AS select `a`.`sc_id` AS `sc_id`,`a`.`ql_id` AS `ql_id`,`a`.`test_id` AS `test_id`,`a`.`sum` AS `sum`,`a`.`score` AS `score`,`a`.`answer` AS `answer`,`c`.`u_id` AS `u_id`,`c`.`u_name` AS `u_name`,`d`.`q_simple_description` AS `q_simple_description`,`e`.`content` AS `class`,`f`.`content` AS `grade` from (((((`judge_program` `a` join `student_class` `b` on((`a`.`sc_id` = `b`.`sc_id`))) join `user` `c` on((`b`.`u_id` = `c`.`u_id`))) join `question_library` `d` on((`a`.`ql_id` = `d`.`ql_id`))) join `class` `e` on((`b`.`class_id` = `e`.`class_id`))) join `grade` `f` on((`e`.`g_id` = `f`.`g_id`))) ;
+CREATE  VIEW `judge_program_view` AS select `a`.`sc_id` AS `sc_id`,`a`.`ql_id` AS `ql_id`,`a`.`test_id` AS `test_id`,`a`.`sum` AS `sum`,`a`.`score` AS `score`,`a`.`answer` AS `answer`,`c`.`u_id` AS `u_id`,`c`.`u_name` AS `u_name`,`d`.`q_simple_description` AS `q_simple_description`,`e`.`content` AS `class`,`f`.`content` AS `grade` from (((((`judge_program` `a` join `student_class` `b` on((`a`.`sc_id` = `b`.`sc_id`))) join `user` `c` on((`b`.`u_id` = `c`.`u_id`))) join `question_library` `d` on((`a`.`ql_id` = `d`.`ql_id`))) join `class` `e` on((`b`.`class_id` = `e`.`class_id`))) join `grade` `f` on((`e`.`g_id` = `f`.`g_id`))) ;
 
 -- ----------------------------
 -- View structure for question_answer_detail_view
 -- ----------------------------
 DROP VIEW IF EXISTS `question_answer_detail_view`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `manager`@`%` SQL SECURITY DEFINER VIEW `question_answer_detail_view` AS select `b`.`start_u_id` AS `start_u_id`,`b`.`reply_u_id` AS `reply_u_id`,`a`.`qa_id` AS `qa_id`,`a`.`qad_id` AS `qad_id`,`a`.`u_id` AS `u_id`,`a`.`content` AS `content`,`a`.`send_time` AS `send_time` from (`question_answer_detail` `a` join `question_answer` `b` on((`a`.`qa_id` = `b`.`qa_id`))) ;
+CREATE  VIEW `question_answer_detail_view` AS select `b`.`start_u_id` AS `start_u_id`,`b`.`reply_u_id` AS `reply_u_id`,`a`.`qa_id` AS `qa_id`,`a`.`qad_id` AS `qad_id`,`a`.`u_id` AS `u_id`,`a`.`content` AS `content`,`a`.`send_time` AS `send_time` from (`question_answer_detail` `a` join `question_answer` `b` on((`a`.`qa_id` = `b`.`qa_id`))) ;
 
 -- ----------------------------
 -- View structure for student_evaluate_view
 -- ----------------------------
 DROP VIEW IF EXISTS `student_evaluate_view`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `manager`@`%` SQL SECURITY DEFINER VIEW `student_evaluate_view` AS select `d`.`u_id` AS `u_id`,`d`.`u_name` AS `u_name`,`b`.`content` AS `class_name`,`a`.`content` AS `grade_name`,`c`.`evaluate` AS `evaluate`,`c`.`coverage` AS `coverage`,`c`.`sc_id` AS `sc_id`,`a`.`c_id` AS `c_id` from (((`grade` `a` join `class` `b` on((`a`.`g_id` = `b`.`g_id`))) join `student_class` `c` on((`b`.`class_id` = `c`.`class_id`))) join `user` `d` on((`c`.`u_id` = `d`.`u_id`))) ;
+CREATE  VIEW `student_evaluate_view` AS select `d`.`u_id` AS `u_id`,`d`.`u_name` AS `u_name`,`b`.`content` AS `class_name`,`a`.`content` AS `grade_name`,`c`.`evaluate` AS `evaluate`,`c`.`coverage` AS `coverage`,`c`.`sc_id` AS `sc_id`,`a`.`c_id` AS `c_id` from (((`grade` `a` join `class` `b` on((`a`.`g_id` = `b`.`g_id`))) join `student_class` `c` on((`b`.`class_id` = `c`.`class_id`))) join `user` `d` on((`c`.`u_id` = `d`.`u_id`))) ;
 
 -- ----------------------------
 -- View structure for student_knowledge_view
 -- ----------------------------
 DROP VIEW IF EXISTS `student_knowledge_view`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `manager`@`%` SQL SECURITY DEFINER VIEW `student_knowledge_view` AS select `a`.`c_id` AS `c_id`,`d`.`u_id` AS `u_id`,`c`.`kp_id` AS `kp_id`,`c`.`count` AS `count`,`c`.`right_count` AS `right_count` from (((`section` `a` join `knowledge_point` `b` on((`a`.`s_id` = `b`.`s_id`))) join `student_knowledge` `c` on((`b`.`kp_id` = `c`.`kp_id`))) join `student_class` `d` on((`d`.`sc_id` = `c`.`sc_id`))) ;
+CREATE  VIEW `student_knowledge_view` AS select `a`.`c_id` AS `c_id`,`d`.`u_id` AS `u_id`,`c`.`kp_id` AS `kp_id`,`c`.`count` AS `count`,`c`.`right_count` AS `right_count` from (((`section` `a` join `knowledge_point` `b` on((`a`.`s_id` = `b`.`s_id`))) join `student_knowledge` `c` on((`b`.`kp_id` = `c`.`kp_id`))) join `student_class` `d` on((`d`.`sc_id` = `c`.`sc_id`))) ;
 
 -- ----------------------------
 -- View structure for student_test_view
 -- ----------------------------
 DROP VIEW IF EXISTS `student_test_view`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `manager`@`%` SQL SECURITY DEFINER VIEW `student_test_view` AS select `a`.`u_id` AS `u_id`,`a`.`u_name` AS `u_name`,`a`.`code` AS `code`,`g`.`content` AS `grade`,`f`.`content` AS `class`,`f`.`class_id` AS `class_id`,`c`.`sc_id` AS `sc_id`,`d`.`c_id` AS `c_id`,`d`.`test_id` AS `test_id`,`c`.`qg_id` AS `qg_id`,`c`.`score` AS `score`,`c`.`start_time` AS `start_do_time`,`c`.`submit_time` AS `submit_time`,`c`.`sum` AS `sum`,`c`.`answer` AS `answer`,`d`.`start_time` AS `start_time`,`d`.`end_time` AS `end_time`,`d`.`work_time` AS `work_time`,`d`.`test_name` AS `test_name`,`d`.`role` AS `role`,`d`.`t_type` AS `t_type`,`d`.`demand` AS `demand`,`e`.`c_name` AS `c_name` from ((((((`user` `a` join `student_class` `b` on((`a`.`u_id` = `b`.`u_id`))) join `student_test` `c` on((`b`.`sc_id` = `c`.`sc_id`))) join `test` `d` on((`c`.`test_id` = `d`.`test_id`))) join `course` `e` on((`d`.`c_id` = `e`.`c_id`))) join `class` `f` on((`f`.`class_id` = `b`.`class_id`))) join `grade` `g` on((`f`.`g_id` = `g`.`g_id`))) ;
+CREATE  VIEW `student_test_view` AS select `a`.`u_id` AS `u_id`,`a`.`u_name` AS `u_name`,`a`.`code` AS `code`,`g`.`content` AS `grade`,`f`.`content` AS `class`,`f`.`class_id` AS `class_id`,`c`.`sc_id` AS `sc_id`,`d`.`c_id` AS `c_id`,`d`.`test_id` AS `test_id`,`c`.`qg_id` AS `qg_id`,`c`.`score` AS `score`,`c`.`start_time` AS `start_do_time`,`c`.`submit_time` AS `submit_time`,`c`.`sum` AS `sum`,`c`.`answer` AS `answer`,`d`.`start_time` AS `start_time`,`d`.`end_time` AS `end_time`,`d`.`work_time` AS `work_time`,`d`.`test_name` AS `test_name`,`d`.`role` AS `role`,`d`.`t_type` AS `t_type`,`d`.`demand` AS `demand`,`e`.`c_name` AS `c_name` from ((((((`user` `a` join `student_class` `b` on((`a`.`u_id` = `b`.`u_id`))) join `student_test` `c` on((`b`.`sc_id` = `c`.`sc_id`))) join `test` `d` on((`c`.`test_id` = `d`.`test_id`))) join `course` `e` on((`d`.`c_id` = `e`.`c_id`))) join `class` `f` on((`f`.`class_id` = `b`.`class_id`))) join `grade` `g` on((`f`.`g_id` = `g`.`g_id`))) ;
 
 -- ----------------------------
 -- View structure for user_question_answer_view
 -- ----------------------------
 DROP VIEW IF EXISTS `user_question_answer_view`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `manager`@`%` SQL SECURITY DEFINER VIEW `user_question_answer_view` AS select `a`.`qa_id` AS `qa_id`,`a`.`c_id` AS `c_id`,`a`.`start_u_id` AS `start_u_id`,`b`.`u_name` AS `start_u_name`,`a`.`reply_u_id` AS `reply_u_id`,`c`.`u_name` AS `reply_u_name`,`a`.`is_new_question` AS `is_new_question`,`a`.`is_new_reply` AS `is_new_reply`,`a`.`topic` AS `topic`,`a`.`is_closed` AS `is_closed`,`a`.`last_update_time` AS `last_update_time` from ((`question_answer` `a` join `user` `b` on((`a`.`start_u_id` = `b`.`u_id`))) join `user` `c` on((`a`.`reply_u_id` = `c`.`u_id`))) ;
+CREATE  VIEW `user_question_answer_view` AS select `a`.`qa_id` AS `qa_id`,`a`.`c_id` AS `c_id`,`a`.`start_u_id` AS `start_u_id`,`b`.`u_name` AS `start_u_name`,`a`.`reply_u_id` AS `reply_u_id`,`c`.`u_name` AS `reply_u_name`,`a`.`is_new_question` AS `is_new_question`,`a`.`is_new_reply` AS `is_new_reply`,`a`.`topic` AS `topic`,`a`.`is_closed` AS `is_closed`,`a`.`last_update_time` AS `last_update_time` from ((`question_answer` `a` join `user` `b` on((`a`.`start_u_id` = `b`.`u_id`))) join `user` `c` on((`a`.`reply_u_id` = `c`.`u_id`))) ;
 
 SET FOREIGN_KEY_CHECKS = 1;
