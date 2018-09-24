@@ -16,7 +16,7 @@ package-lock.json
 log/operate/*
 log/responseTime/*
 log/visit/*
-files/temp/*
+files/temp/uploads/*
 files/userIcon/*
 files/tests/*
 files/imgs/*
