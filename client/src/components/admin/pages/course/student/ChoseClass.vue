@@ -17,7 +17,7 @@ export default {
   methods: {
     getAllClass() {
       let _this = this;
-      $http.get("course/tree?c_id=" + this.$route.params.c_id).then(res => {
+      $http.get("/course/tree?c_id=" + this.$route.params.c_id).then(res => {
         if (res.children) {
           _this.dealTreeData(res.children);
           _this.allClass = res.children;

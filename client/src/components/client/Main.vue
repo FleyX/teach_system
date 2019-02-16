@@ -24,7 +24,6 @@ export default {
     }
   },
   beforeCreate() {
-    axios.defaults.baseURL = actionUrl;
     window.type = "client";
   },
   created() {

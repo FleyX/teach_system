@@ -10,17 +10,33 @@
         </el-form-item>
         <el-form-item>
           <el-tooltip effect="dark" content="6-20位数字字母组合" placement="right">
-            <el-input type="password" placeholder="密码" v-model="password" @keydown.enter.native="submit" clearable/>
+            <el-input
+              type="password"
+              placeholder="密码"
+              v-model="password"
+              @keydown.enter.native="submit"
+              clearable
+            />
           </el-tooltip>
         </el-form-item>
         <div class="all-item-between" style="margin-bottom:22px">
-          <el-input style="width:60%" type="text" placeholder="验证码" v-model="authcode" @keyup.enter.native="submit" />
+          <el-input
+            style="width:60%"
+            type="text"
+            placeholder="验证码"
+            v-model="authcode"
+            @keyup.enter.native="submit"
+          />
           <el-tooltip effect="dark" content="点击切换" placement="top">
-            <img style="width:37%;height:40px;border-radius:5%" :src="'data:image/png;base64,'+imgData" @click="getImg()" />
+            <img
+              style="width:37%;height:40px;border-radius:5%"
+              :src="'data:image/png;base64,'+imgData"
+              @click="getImg()"
+            >
           </el-tooltip>
         </div>
         <div class="all-item-between" style="margin-bottom:22px;line-height:19px">
-          <el-checkbox label="记住我" style="color:white" v-model="isRememberMe" />
+          <el-checkbox label="记住我" style="color:white" v-model="isRememberMe"/>
           <router-link :to="resetPass" style="display:flex">
             <span class="forget-pass">忘记密码？</span>
           </router-link>
@@ -74,7 +90,7 @@ export default {
     submit() {
       let _this = this;
       $http
-        .post("login", {
+        .post("/login", {
           code: this.code,
           password: this.password,
           authcode: this.authcode,
@@ -121,7 +137,7 @@ export default {
     },
     getImg() {
       let _this = this;
-      $http.get("authcode").then(res => {
+      $http.get("/authcode").then(res => {
         _this.imgData = res.data;
         _this.authcodeKey = res.key;
       });

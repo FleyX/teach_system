@@ -10,7 +10,23 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      "/api/v1": {
+        target: 'http://localhost:8082',
+        changeOrigin: true
+      },
+      "/login-api": {
+        target: 'http://localhost:8083',
+        changeOrigin: true
+      },
+      "/files": {
+        target: "http://localhost:8082",
+        changeOrigin:true,
+        pathRewrite:{
+          '^/files':''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -20,7 +36,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

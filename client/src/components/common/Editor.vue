@@ -54,7 +54,7 @@ export default {
       'redo'  // 重复
     ]
     //配置图片上传回显
-    editor.customConfig.uploadImgServer = actionUrl + '/public/img_upload';
+    editor.customConfig.uploadImgServer = '/api/v1/public/img_upload';
     let token;
     if (this.$route.path.startsWith('/admin/'))
       token = getToken();

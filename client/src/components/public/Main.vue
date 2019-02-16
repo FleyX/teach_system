@@ -10,12 +10,12 @@
 export default {
   name: "publicMain",
   beforeCreate() {
-    axios.defaults.baseURL =publicUrl;
+    window.type = "public";
   }
 };
 </script>
 <style>
-html{
+html {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
 }
