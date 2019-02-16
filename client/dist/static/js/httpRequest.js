@@ -36,10 +36,16 @@ $httpc.delete = (url, params = null) => {
 
 request = (url, method, params, form, isFormData, type) => {
   let token;
-  if (type == 'admin')
+  if (type == 'admin') {
     token = getToken();
-  else
+  } else {
     token = getClientToken();
+  }
+  if (window.type === 'public') {
+    url = (url.startsWith('/') ? '/login-api' : '/login-api/') + url
+  } else {
+    url = (url.startsWith('/') ? '/api/v1' : '/api/v1/') + url
+  }
   let headers = {
     'Authorization': token
   };
@@ -60,11 +66,11 @@ request = (url, method, params, form, isFormData, type) => {
       // console.log(res);
       if (res.headers['new-token'] != undefined) {
         console.log('set new token');
-        if (vm.$route.path.startsWith('/admin')){
-          localStorage.setItem("token",res.headers['new-token']);
+        if (vm.$route.path.startsWith('/admin')) {
+          localStorage.setItem("token", res.headers['new-token']);
           window.token = undefined;
-        }else if(vm.$route.path.startsWith('/client')){
-          localStorage.setItem("clientToken",res.headers['new-token']);
+        } else if (vm.$route.path.startsWith('/client')) {
+          localStorage.setItem("clientToken", res.headers['new-token']);
           window.clientToken = undefined;
         }
       }
