@@ -6,20 +6,21 @@ const path = require('path');
 const config = {
     //redis配置，由于redis不开放，故无需设置账号密码
     redis: {
-        host: '192.168.114.128',
-        prot: 6379
+        host: '192.168.1.100',
+        prot: 6379,
+        password:'123456'
     },
     //mysql配置
     mysql: {
         connectionLimit: 50, //默认值10
-        host: 'localhost',
+        host: '192.168.1.100',
         user: 'root',
         password: '123456',
         database: 'teach_system',
         multipleStatements: false//默认值false
     },
     //返回的资源文件访问路径前缀
-    host:'http://localhost:8082/files',
+    host:'/files',
     //端口
     port:8082,
     //编程题判题接口

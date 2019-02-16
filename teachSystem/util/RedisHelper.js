@@ -1,13 +1,13 @@
 const redis = require('redis');
 const config = require('../config/config.js');
 
-let client = redis.createClient(config.redis.port, config.redis.host);
+let client = redis.createClient(config.redis);
 client.on('error', err => {
     throw err;
 })
 
 client.on('ready', () => {
-    // console.log('redis 初始化');
+    console.log('redis 初始化');
 })
 
 class RedisHelper {

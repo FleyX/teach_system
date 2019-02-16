@@ -1,7 +1,7 @@
 const redis = require('redis');
 const config = require('../config/config.js');
 
-let client = redis.createClient(config.redis.port, config.redis.host);
+let client = redis.createClient(config.redis);
 client.on('error', err => {
     throw err;
 })

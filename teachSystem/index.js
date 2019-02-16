@@ -14,8 +14,8 @@ const init = require('./middleware/init.js');
 console.log(config);
 
 const app = new Koa();
-//开发阶段使用koa-static返回静态文件，部署后使用nginx代理
-// app.use(static(config.staticPath));
+// 开发阶段使用koa-static返回静态文件，部署后使用nginx代理
+app.use(static(config.staticPath));
 
 
 let router = new Router({
