@@ -15,3 +15,6 @@ yarn-error.log*
 *.log
 **.package-lock.json
 yarn.lock
+docker/env/mysql/data
+docker/env/redis/data
+timezone

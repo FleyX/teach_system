@@ -3,7 +3,8 @@ const objectOperate = require('../util/ObjectOperate.js');
 const config = {
     redis: {
         host: process.env.redisHost || 'redis',
-        prot: 6379
+        prot: 6379,
+	password:'123456'
     },
     mysql: {
         connectionLimit: 50, //默认值10
