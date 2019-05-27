@@ -63,7 +63,7 @@ let verify = async (ctx) => {
     }
     //获取该用户类型权限
     let authKey = userInfo.j_id + '_authority';
-    let urls = await redisHelper.getObject(authKey);
+    let urls = JSON.parse(await redisHelper.getObject(authKey));
     // let urls = null;
     if (urls == null) {
         urls = await mysqlHelper.row(`
@@ -73,7 +73,7 @@ let verify = async (ctx) => {
         urls.forEach(item => {
             temp[item.url + item.method] = true;
         })
-        await redisHelper.setObject(authKey, temp);
+        await redisHelper.setString(authKey, JSON.stringify(urls));
         urls = temp;
     }
     //判断是否拥有权限
