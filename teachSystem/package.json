@@ -16,6 +16,8 @@
     "iconv-lite": "^0.4.23",
     "js-xlsx": "^0.8.22",
     "jsonwebtoken": "^8.2.0",
+    "nodemailer": "^4.6.2",
+    "trek-captcha": "^0.4.0",
     "koa": "^2.4.1",
     "koa-body": "^2.5.0",
     "koa-router": "^7.3.0",
