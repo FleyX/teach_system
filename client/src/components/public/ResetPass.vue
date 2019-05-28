@@ -11,7 +11,7 @@
           <el-input type="password" placeholder="新密码" v-model="pass" clearable @keyup.enter.native="submit" />
         </el-form-item>
         <el-form-item>
-          <el-input type="password" placeholder="重复新密码" v-model="repass" @keyup.enter.native="submit" clearable/>
+          <el-input type="password" placeholder="重复新密码" v-model="repass" @keyup.enter.native="submit" clearable />
         </el-form-item>
         <div class="all-item-between" style="margin-bottom:22px">
           <el-input style="width:60%" type="text" placeholder="验证码" v-model="authCode" @keyup.enter.native="submit" />
@@ -43,13 +43,13 @@ export default {
     if (this.$route.query.redirect != undefined)
       this.returnUrl += '?redirect=' + this.$route.query.redirect;
   },
-  destroyed(){
-    if(this.timer!=null) clearInterval(this.timer);
+  destroyed() {
+    if (this.timer != null) clearInterval(this.timer);
   },
   methods: {
     submit() {
       $http
-        .post("reset-password", {
+        .post("/public/reset-password", {
           code: this.code,
           mail: this.email,
           pass: this.pass,
@@ -67,7 +67,7 @@ export default {
     },
     getAuthCode() {
       if (this.countdown > 0) return;
-      $http.post("mail-auth-code", {
+      $http.post("/public/mail-auth-code", {
         code: this.code,
         mail: this.email
       }).then(data => {
