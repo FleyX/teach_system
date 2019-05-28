@@ -75,7 +75,6 @@ class publicDao {
         token
       };
       RedisHelper.deleteKey(authcodeKey);
-      logger.success(ctx.ip, userInfo.u_id);
     }
     ctx.body = res;
   }
