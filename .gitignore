@@ -15,6 +15,12 @@ yarn-error.log*
 *.log
 **.package-lock.json
 yarn.lock
-docker/env/mysql/data
-docker/env/redis/data
 timezone
+
+files/mysql/data/*
+!files/mysql/data/.gitkeep
+files/redis/data/*
+!files/redis/data/.gitkeep
+files/front/log/*
+!files/front/data/.gitkeep
+

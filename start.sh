@@ -17,4 +17,5 @@ if [ $omsCount == 0 ]; then
     docker rm temp_mysql
 fi
 
+# 启动自己的
 docker-compose up -d

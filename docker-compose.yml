@@ -39,6 +39,31 @@ services:
     ports: 
       - 8085:8080
 
+  # 启动判题核心
+  judge_server:
+    image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server
+    read_only: true
+    networks: teachSystem
+    cap_drop:
+        - SETPCAP
+        - MKNOD
+        - NET_BIND_SERVICE
+        - SYS_CHROOT
+        - SETFCAP
+        - FSETID
+    tmpfs:
+        - /tmp
+    volumes:
+        - ../JudgeServer/tests/test_case:/test_case:ro
+        - ../JudgeServer/log:/log
+        - ../JudgeServer/run:/judger
+    environment:
+        - BACKEND_URL=http://backend:80/api/judge_server_heartbeat
+        - SERVICE_URL=http://judge-server:12358
+        - TOKEN=YOUR_TOKEN_HERE
+    ports:
+        - "0.0.0.0:12358:8080"
+
   teachSystemBackend:
     build: ./
     container_name: teachSystemBackend
@@ -47,6 +72,8 @@ services:
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
       - ../teachSystem:/opt/workspace
+    ports: 
+      - 8080:8080
 
 
 
