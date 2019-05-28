@@ -3,6 +3,8 @@
 判题使用的是青岛大学的判题核心，[https://github.com/QingdaoU/JudgeServer](https://github.com/QingdaoU/JudgeServer)
 判重使用SIM实现，[地址](https://dickgrune.com/Programs/similarity_tester/)
 
+demo地址:[ali.tapme.top](http://ali.tapme.top)
+
 # 安装
 
 &emsp;&emsp;脚本只包含了本系统的一键部署，并未包涵判题系统的部署，如需要判题，请自行依照文档进行部署。
