@@ -1,20 +1,20 @@
 #!/bin/bash
-#获取当前脚本所在目录
+#获取脚本所在目录
 path=$(cd `dirname $0`;pwd)
-
+pwd
 echo "Asia/Shanghai" >$path/timezone
+echo "mysql容器建立"
 
-/bin/bash $path/stop.sh >/dev/null 2>&1
+#判断data中有没有teach_system数据库，没有就进行初始化数据库的操作
+omsCount=$(ls -l $path/env/mysql/data | grep -wc teach_system)
+if [ $omsCount == 0 ]; then
+    echo "首次安装系统，进行sql初始化,请稍候"
+    docker run --name=temp_mysql -itd -p 3306:3306 --privileged=true  -v $path/env/mysql/data:/var/lib/mysql  -v $path/env/mysql/my.cnf:/etc/mysql/my.cnf -v $path/env/mysql/init.sql:/opt/init.sql -e MYSQL_ROOT_PASSWORD=$password mysql:5.7.25
+    sleep 20s
+    docker exec mysql bash -c "mysql -u root -p$password</opt/init.sql"
+    sleep 3s
+    docker stop temp_mysql
+    docker rm temp_mysql
+fi
 
-/bin/bash $path/env/mysql/start.sh
-
-/bin/bash $path/env/redis/start.sh
-
-echo "teach-system容器建立"
-docker run -itd --name=teach-system -v $path/../teachSystem:/opt/workspace --link redis --link mysql registry.cn-hangzhou.aliyuncs.com/fleyx/node:v1 /bin/bash /opt/start.sh
-
-echo "login-system容器建立"
-docker run -itd --name=login-system -v $path/../loginSystem:/opt/workspace --link redis --link mysql registry.cn-hangzhou.aliyuncs.com/fleyx/node:v1 /bin/bash /opt/start.sh
-
-echo "前端容器建立"
-docker run -itd --name=front -p 80:8080 --link login-system --link teach-system -v $path/../client/dist:/opt/dist -v $path/front/log:/var/log/nginx -v $path/front/nginx.conf:/etc/nginx/nginx.conf nginx:latest
+docker-compose up -d

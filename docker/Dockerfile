@@ -13,3 +13,4 @@ RUN cd /opt && \
 	printf '#!/bin/bash\ncd /opt/workspace\nnpm --registry https://registry.npm.taobao.org install >/dev/null 2>&1\nnode index.js' > start.sh && \
 	chmod +x start.sh
 ENV PATH=$PATH:/opt/node10/bin:/opt/sim NODE_ENV=production 
+CMD [ "cd /opt/workspace && ./start.sh" ]

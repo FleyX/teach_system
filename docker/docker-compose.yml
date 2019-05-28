@@ -1,0 +1,53 @@
+version: "2"
+
+services: 
+  teachSystemMysql:
+    image: mysql:5.7.25
+    container_name: teachSystemMysql
+    volumes: 
+      - /etc/localtime:/etc/localtime
+      - ./timezone:/ect/timezone
+      - ./env/mysql/data:/var/lib/mysql
+      - /env/mysql/my.cnf:/etc/mysql/my.cnf
+    ports: 
+      - 3306:3306
+    networks: teachSystem
+  
+  teachSystemRedis:
+    image: redis:3.2.10
+    container_name: teachSystemRedis
+    networks: teachSystem
+    volumes: 
+      - /etc/localtime:/etc/localtime
+      - ./timezone:/ect/timezone
+      - ./env/redis/data:data
+      - ./env/redis/redis.conf:/etc/redis/redis.conf
+    ports: 
+      - 6379:6379
+    command: redis-server /etc/redis/redis.conf
+
+  teachSystemFront:
+    image: nginx
+    container_name: teachSystemFront
+    networks: teachSystem
+    volumes: 
+      - /etc/localtime:/etc/localtime
+      - ./timezone:/ect/timezone
+      - ../client/dist:/opt/dist
+      - ./env/front/log:/var/log/nginx
+      - ./env/front/nginx.conf:/etc/nginx/nginx.conf
+    ports: 
+      - 8085:8080
+
+  teachSystemBackend:
+    build: ./
+    container_name: teachSystemBackend
+    networks: teachSystem
+    volumes: 
+      - /etc/localtime:/etc/localtime
+      - ./timezone:/ect/timezone
+      - ../teachSystem:/opt/workspace
+
+
+
+
