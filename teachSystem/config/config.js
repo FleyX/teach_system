@@ -109,7 +109,7 @@ module.exports = {
     .update(process.env.judgeToken || "12345678")
     .digest("hex"),
   //测试用例存储路径
-  testSavePath: process.env.testSavePath || path.join(base.rootPath, "files", "tests"),
+  testSavePath: process.env.testSavePath || path.join(rootPath, "files", "tests"),
   //编程题判题参数
   programConfig: judgeConfig
 };
