@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# mysql root密码通过环境变量配置
+# export MYSQL_PASS=123456
+# 判题服务密钥通过环境变量配置
+# export JUDGE_TOKEN = 12345678
+
 #获取脚本所在目录
 path=$(cd `dirname $0`;pwd)
 pwd
@@ -9,7 +15,7 @@ echo "mysql容器建立"
 omsCount=$(ls -l $path/env/mysql/data | grep -wc teach_system)
 if [ $omsCount == 0 ]; then
     echo "首次安装系统，进行sql初始化,请稍候"
-    docker run --name=temp_mysql -itd -p 3306:3306 --privileged=true  -v $path/env/mysql/data:/var/lib/mysql  -v $path/env/mysql/my.cnf:/etc/mysql/my.cnf -v $path/env/mysql/init.sql:/opt/init.sql -e MYSQL_ROOT_PASSWORD=$password mysql:5.7.25
+    docker run --name=temp_mysql -itd -p 3306:3306 --privileged=true  -v $path/env/mysql/data:/var/lib/mysql  -v $path/env/mysql/my.cnf:/etc/mysql/my.cnf -v $path/env/mysql/init.sql:/opt/init.sql -e MYSQL_ROOT_PASSWORD=$MYSQL_PASS mysql:5.7.25
     sleep 20s
     docker exec mysql bash -c "mysql -u root -p$password</opt/init.sql"
     sleep 3s

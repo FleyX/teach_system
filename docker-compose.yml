@@ -7,8 +7,10 @@ services:
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
-      - ./env/mysql/data:/var/lib/mysql
-      - /env/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./files/mysql/data:/var/lib/mysql
+      - /files/mysql/my.cnf:/etc/mysql/my.cnf
+    environment: 
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASS
     ports: 
       - 3306:3306
     networks: teachSystem
@@ -20,8 +22,8 @@ services:
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
-      - ./env/redis/data:data
-      - ./env/redis/redis.conf:/etc/redis/redis.conf
+      - ./files/redis/data:data
+      - ./files/redis/redis.conf:/etc/redis/redis.conf
     ports: 
       - 6379:6379
     command: redis-server /etc/redis/redis.conf
@@ -33,14 +35,33 @@ services:
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
-      - ../client/dist:/opt/dist
-      - ./env/front/log:/var/log/nginx
-      - ./env/front/nginx.conf:/etc/nginx/nginx.conf
+      - ./client/dist:/opt/dist
+      - ./files/front/log:/var/log/nginx
+      - ./files/front/nginx.conf:/etc/nginx/nginx.conf
     ports: 
       - 8085:8080
 
+  teachSystemBackend:
+    build: ./
+    container_name: teachSystemBackend
+    networks: teachSystem
+    environment: 
+      - mysqlHost="teachSystemMysql"
+      - redisHost="teachSystemRedis"
+      - mysqlPassword=$MYSQL_PASS
+      - judgeToken=$JUDGE_TOKEN
+      - judgeUrl="http://judgeServer:8080"
+      - testSavePath="/opt/test_case"
+    volumes: 
+      - /etc/localtime:/etc/localtime
+      - ./timezone:/ect/timezone
+      - ./teachSystem:/opt/workspace
+      - ../JudgeServer/tests/test_case:/opt/test_case
+    ports: 
+      - 8089:8088
+
   # 启动判题核心
-  judge_server:
+  judgeServer:
     image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server
     read_only: true
     networks: teachSystem
@@ -60,20 +81,11 @@ services:
     environment:
         - BACKEND_URL=http://backend:80/api/judge_server_heartbeat
         - SERVICE_URL=http://judge-server:12358
-        - TOKEN=YOUR_TOKEN_HERE
+        - TOKEN=$JUDGE_TOKEN
     ports:
         - "0.0.0.0:12358:8080"
 
-  teachSystemBackend:
-    build: ./
-    container_name: teachSystemBackend
-    networks: teachSystem
-    volumes: 
-      - /etc/localtime:/etc/localtime
-      - ./timezone:/ect/timezone
-      - ../teachSystem:/opt/workspace
-    ports: 
-      - 8080:8080
+
 
 
 
