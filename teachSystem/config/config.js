@@ -1,6 +1,8 @@
 const path = require("path");
 const rootPath = path.dirname(__dirname);
 const judgeConfig = require("./judgeConfig.js");
+let crypto = require("crypto");
+
 module.exports = {
   //当前项目根目录
   rootPath: rootPath,
@@ -84,12 +86,12 @@ module.exports = {
   //代码存储目录
   codeSavePath: path.join(rootPath, "files", "code"),
   redis: {
-    host: process.env.redisHost || "redis",
+    host: process.env.redisHost || "localhost",
     prot: 6379
   },
   mysql: {
     connectionLimit: 50, //默认值10
-    host: process.env.mysqlHost || "mysql",
+    host: process.env.mysqlHost || "localhost",
     user: "root",
     password: process.env.mysqlPassword || "123456",
     database: "teach_system",
@@ -100,9 +102,12 @@ module.exports = {
   //端口
   port: process.env.port || 8088,
   //判题接口
-  judgeUrl: process.env.judgeUrl || "http://judge:12358/judge",
+  judgeUrl: process.env.judgeUrl || "http://localhost:12358/judge",
   //判题token
-  judgeToken: process.env.judgeToken || "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+  judgeToken: crypto
+    .createHash("SHA256")
+    .update(process.env.judgeToken || "12345678")
+    .digest("hex"),
   //测试用例存储路径
   testSavePath: process.env.testSavePath || path.join(base.rootPath, "files", "tests"),
   //编程题判题参数
