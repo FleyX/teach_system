@@ -51,12 +51,12 @@ services:
       - mysqlPassword=$MYSQL_PASS
       - judgeToken=$JUDGE_TOKEN
       - judgeUrl="http://judgeServer:8080"
-      - testSavePath="/opt/test_case"
+      - testSavePath="/opt/tests/test_case"
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
       - ./teachSystem:/opt/workspace
-      - ../JudgeServer/tests/test_case:/opt/test_case
+      - ../JudgeServer/tests/:/opt/tests
     ports: 
       - 8089:8088
 
