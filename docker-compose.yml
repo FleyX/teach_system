@@ -45,7 +45,7 @@ services:
       - 8085:8080
 
   teach-system-backend:
-    build: ./files
+    image: registry.cn-hangzhou.aliyuncs.com/fleyx/node:v1
     container_name: teach-system-backend
     networks: 
       - teachSystem
@@ -63,6 +63,7 @@ services:
       - ../JudgeServer/tests/:/opt/tests
     ports: 
       - 8089:8088
+    command: /bin/bash /opt/start.sh
 
   # 启动判题核心
   judge-server:
