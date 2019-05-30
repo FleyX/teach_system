@@ -1,9 +1,9 @@
 version: "2"
 
 services: 
-  teachSystemMysql:
+  teach-system-mysql:
     image: mysql:5.7.25
-    container_name: teachSystemMysql
+    container_name: teach-system-mysql
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
@@ -16,9 +16,9 @@ services:
     networks: 
       - teachSystem
   
-  teachSystemRedis:
+  teach-system-redis:
     image: redis:3.2.10
-    container_name: teachSystemRedis
+    container_name: teach-system-redis
     networks: 
       - teachSystem
     volumes: 
@@ -30,9 +30,9 @@ services:
       - 6379:6379
     command: redis-server /etc/redis/redis.conf
 
-  teachSystemFront:
+  teach-system-front:
     image: nginx
-    container_name: teachSystemFront
+    container_name: teach-system-front
     networks:
       - teachSystem
     volumes: 
@@ -44,17 +44,17 @@ services:
     ports: 
       - 8085:8080
 
-  teachSystemBackend:
-    build: ./
-    container_name: teachSystemBackend
+  teach-system-backend:
+    build: ./files
+    container_name: teach-system-backend
     networks: 
       - teachSystem
     environment: 
-      - mysqlHost="teachSystemMysql"
-      - redisHost="teachSystemRedis"
+      - mysqlHost="teach-system-mysql"
+      - redisHost="teach-system-redis"
       - mysqlPassword=$MYSQL_PASS
       - judgeToken=$JUDGE_TOKEN
-      - judgeUrl="http://judgeServer:8080"
+      - judgeUrl="http://judge-server:8080"
       - testSavePath="/opt/tests/test_case"
     volumes: 
       - /etc/localtime:/etc/localtime
@@ -65,7 +65,7 @@ services:
       - 8089:8088
 
   # 启动判题核心
-  judgeServer:
+  judge-server:
     image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server
     read_only: true
     networks: 
@@ -89,6 +89,9 @@ services:
         - TOKEN=$JUDGE_TOKEN
     ports:
         - "0.0.0.0:12358:8080"
+
+networks:
+  teachSystem:
 
 
 
