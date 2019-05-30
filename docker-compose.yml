@@ -8,7 +8,7 @@ services:
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
       - ./files/mysql/data:/var/lib/mysql
-      - /files/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./files/mysql/my.cnf:/etc/mysql/my.cnf
     environment: 
       - MYSQL_ROOT_PASSWORD=$MYSQL_PASS
     ports: 
@@ -24,7 +24,7 @@ services:
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
-      - ./files/redis/data:data
+      - ./files/redis/data:/data
       - ./files/redis/redis.conf:/etc/redis/redis.conf
     ports: 
       - 6379:6379
@@ -60,10 +60,10 @@ services:
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
       - ./teachSystem:/opt/workspace
-      - ../JudgeServer/tests/:/opt/tests
+      - ./JudgeServer/tests/:/opt/tests
     ports: 
       - 8089:8088
-    command: /bin/bash /opt/start.sh
+    command: "sleep 20 && /bin/bash /opt/start.sh"
 
   # 启动判题核心
   judge-server:
