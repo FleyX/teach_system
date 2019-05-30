@@ -13,12 +13,14 @@ services:
       - MYSQL_ROOT_PASSWORD=$MYSQL_PASS
     ports: 
       - 3306:3306
-    networks: teachSystem
+    networks: 
+      - teachSystem
   
   teachSystemRedis:
     image: redis:3.2.10
     container_name: teachSystemRedis
-    networks: teachSystem
+    networks: 
+      - teachSystem
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
@@ -31,7 +33,8 @@ services:
   teachSystemFront:
     image: nginx
     container_name: teachSystemFront
-    networks: teachSystem
+    networks:
+      - teachSystem
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
@@ -44,7 +47,8 @@ services:
   teachSystemBackend:
     build: ./
     container_name: teachSystemBackend
-    networks: teachSystem
+    networks: 
+      - teachSystem
     environment: 
       - mysqlHost="teachSystemMysql"
       - redisHost="teachSystemRedis"
@@ -64,7 +68,8 @@ services:
   judgeServer:
     image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server
     read_only: true
-    networks: teachSystem
+    networks: 
+      - teachSystem
     cap_drop:
         - SETPCAP
         - MKNOD
