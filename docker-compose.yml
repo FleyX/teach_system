@@ -33,6 +33,8 @@ services:
   teach-system-front:
     image: nginx
     container_name: teach-system-front
+    depends_on:
+      - teach-system-backend
     networks:
       - teachSystem
     volumes: 
@@ -47,15 +49,18 @@ services:
   teach-system-backend:
     image: registry.cn-hangzhou.aliyuncs.com/fleyx/node:v1
     container_name: teach-system-backend
+    depends_on:
+      - teach-system-mysql
+      - teach-system-redis
     networks: 
       - teachSystem
     environment: 
-      - mysqlHost="teach-system-mysql"
-      - redisHost="teach-system-redis"
+      - mysqlHost=teach-system-mysql
+      - redisHost=teach-system-redis
       - mysqlPassword=$MYSQL_PASS
       - judgeToken=$JUDGE_TOKEN
-      - judgeUrl="http://judge-server:8080"
-      - testSavePath="/opt/tests/test_case"
+      - judgeUrl=http://judge-server:8080
+      - testSavePath=/opt/tests/test_case
     volumes: 
       - /etc/localtime:/etc/localtime
       - ./timezone:/ect/timezone
@@ -63,11 +68,12 @@ services:
       - ./JudgeServer/tests/:/opt/tests
     ports: 
       - 8089:8088
-    command: "sleep 20 && /bin/bash /opt/start.sh"
+    command: "/bin/bash /opt/start.sh"
 
   # 启动判题核心
   judge-server:
     image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server
+    container_name: judge-server
     read_only: true
     networks: 
       - teachSystem
@@ -93,6 +99,7 @@ services:
 
 networks:
   teachSystem:
+  
 
 
 
