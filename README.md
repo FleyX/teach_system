@@ -24,40 +24,16 @@ chmod +x start.sh
 
 **PS:如果docker pull 镜像速度很慢，请给docker设置国内加速地址。**
 
+## 前端技术栈如下
 
-# 主要界面如下：
+- vue.js
+- element.ui
+- axios
 
-## 管理端界面
-1. 登录
-![登录界面](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217124740.png)
+## 后端技术栈如下
 
-2. 管理端主界面
-
-![管理端主界面](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217125012.png)
-
-3. 管理端个人中心
-
-![](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217125100.png)
-
-4. 课程管理
-
-![](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217125136.png)
-
-5. 课程信息管理
-
-![](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217125221.png)
-
-6. 课程公告管理
-
-![](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217125517.png)
-
-
-## 学生端界面
-
-1. 主界面
-
-![](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217125658.png)
-
-2. 课程界面
-
-![](https://raw.githubusercontent.com/FleyX/files/master/teachSystem/20190217125815.png)
+- node.js
+- koa
+- jwt
+- mysql
+- redis
