@@ -6,7 +6,7 @@
 
 代码判重使用SIM实现，[地址](https://dickgrune.com/Programs/similarity_tester/)
 
-demo地址:[ali.tapme.top:8008](http://ali.tapme.top:8008)
+demo地址:[ali.tapme.top:8008](http://ali.tapme.top:8008) 管理员账户密码：123456/123456
 
 # 安装
 
